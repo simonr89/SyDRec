@@ -1,0 +1,67 @@
+=== SyDRec : Systematic Development of Recursive programs ===
+
+DESCRIPTION
+
+This plugin for Coq provides tools to construct and derive programs in
+the BMF style.
+
+The module SyDRec.Morphisms provides the 'Catamorphism' command, which
+generate a catamorphism function and a fusion theorem according to an
+arbitrary inductive type definition. A similar command 'Paramorphism'
+is also provided.
+
+The module SyDRec.Constructive provides the 'beta' tactic as well as
+other tools for constructive proofs (mostly extending the type sig to
+n-ary propositions).
+
+REQUIREMENTS
+
+This module is known to be compatible with Coq 8.4. Other versions
+have not been tested, and the module is almost certainly NOT
+compatible with versions 8.2 or earlier.
+
+TO INSTALL
+
+from the top directory:
+
+make
+make install (may require super-user privileges)
+make clean
+
+TO USE
+
+In coq, load the modules with:
+
+Require SyDRec.Constructive.
+Require SyDRec.Morphisms.
+
+CATAMORPHISM AND PARAMORPHISM COMMANDS
+
+To use the Catamorphism command:
+
+Catamorphism foo.
+
+where foo is a reference to an inductive type. This command generates
+two definitions 'cata_foo' and 'cata_foo_fusion', which correspond to
+the catamorphism function (generalized fold) over type foo and its
+fusion theorem.
+
+The use of the paramorphism command is similar.
+
+BETA TACTIC
+
+beta
+
+This tactic performs beta-expansion. It applies to a goal of the form
+{f x = e} and yields the goal {f = (fun x0 => e0)} where {e0} is {e[x :=
+x0]} This tactic is mostly useful when f is an existential variable. It
+can be used to solve higher-order equations.
+
+Error messages:
+
+1. The goal does not have the required form: f x = e
+
+OTHER TOOLS AND TACTICS
+
+Other tools and tactics are documented in the file Constructive.v as
+well as the examples provided.
