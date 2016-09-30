@@ -1,3 +1,13 @@
-*.vo
+Makefile.coq
+*.a
+*.d
+*.cma
+*.cmi
+*.cmo
+*.cmx
+*.cmxa
+*.cmxs
 *.glob
+*.o
 *.v.d
+*.vo
